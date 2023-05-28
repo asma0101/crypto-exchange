@@ -53,16 +53,23 @@ const Login = (props) => {
     function authenticateUser(userInfo) {
         let savedUsers = localStorage.getItem('users') ? JSON.parse(localStorage.getItem('users')) : [];
         setUsers(savedUsers);
-        let response = getUser(userInfo);
+        console.log('users while validation => ' ,users);
+        let response = getUser(userInfo, savedUsers);
         if (response.isUserExists) {
             response.userInfo.loginAttempts++;
-            updateUserLoginAttempts(userInfo, response.userInfo.loginAttempts, savedUsers);
+            updateUserLoginAttempts(userInfo, response.userInfo.loginAttempts, savedUsers, false);
             if ((loginAttemptsExpired(response.userInfo) === false)) {
                 if (!response.userInfo.isBlocked) {
                     if ((response.userInfo.email === userInfo.email) && (response.userInfo.password === userInfo.password)) {
                         setLoginSuccess(true);
+                        setErrorHeading('Success');
+                        setErrorMsg(`Logged in successfully!`);
+                        setShowToaster(true);
                         localStorage.setItem('isLoggedIn', 'true');
-                        navigate("/home")
+                        updateUserLoginAttempts(response.userInfo, 0, savedUsers, true);
+                        setTimeout(() => {
+                            navigate("/home")                            
+                        }, 5000);
                     }
                     else {
                         setErrorHeading('Error');
@@ -87,10 +94,10 @@ const Login = (props) => {
         }
         resetForm();
     }
-    function getUser(userInfo) {
+    function getUser(userInfo, savedUsers) {
         let isUserExists = false;
-        if (users) {
-            users.forEach(user => {
+        if (savedUsers) {
+            savedUsers.forEach(user => {
                 if (user.email === userInfo.email) {
                     userInfo = user;
                     isUserExists = true;
@@ -118,14 +125,18 @@ const Login = (props) => {
         }
     }
 
-    function updateUserLoginAttempts(userInfo, loginAttempts, savedUsers) {
+    function updateUserLoginAttempts(userInfo, loginAttempts, savedUsers, isReset) {
         let index = savedUsers.findIndex(i => i.email === userInfo.email);
-        if (index && index !== -1) {
-            savedUsers[index]['loginAttempts'] = loginAttempts;
-            localStorage.setItem('users', JSON.stringify(savedUsers));
+        if (index !== -1) {
+            if (isReset) {
+                savedUsers[index]['loginAttempts'] = 0;
+            }
+            else {
+                savedUsers[index]['loginAttempts'] = loginAttempts;
+            }
+             localStorage.setItem('users', JSON.stringify(savedUsers));
         }
     }
-    
     
    
     return (

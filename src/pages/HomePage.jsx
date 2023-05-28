@@ -4,7 +4,6 @@ import '../Shared/Styles/Home.scss';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import AboutUsPage from './AboutUsPage';
 import Welcome from '../components/Welcome';
-import Dashbaord from '../components/Dashboard';
 import { useState, useEffect } from 'react';
 
 function HomePage() {
@@ -23,7 +22,6 @@ function HomePage() {
 			<Routes>
 				<Route path="/" element={<Welcome/>}></Route>
                 <Route path="/aboutUs" element={ <AboutUsPage/>}></Route>
-				<Route path="/dashboard" element={ <Dashbaord/>}></Route>
             </Routes>
             {/* <Footer/> */}
         </>

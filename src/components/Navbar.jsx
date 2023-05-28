@@ -33,11 +33,7 @@ function NavbarComp() {
 				{Labels.AboutUs}
 				</Link>
           </Nav.Link>
-					  {/* {isLoggedIn ? <Nav.Link>
-						  <Link className="NavBtn" to="/home/dashboard">
-							  {Labels.Dashboard}
-						  </Link>
-					  </Nav.Link> : null} */}
+					 
           </Nav>
           <Nav>
             <Nav.Link>

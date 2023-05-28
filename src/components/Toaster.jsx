@@ -14,15 +14,10 @@ const Toaster = (props) => {
         <>
             <ToastContainer position="top-center" className="p-3">
                 <Toast show={showToast} onClose={toggleToaster} >
-                    <Toast.Header className="bg-danger">
-                        <img
-                        src="holder.js/20x20?text=%20"
-                        className="rounded me-2"
-                        alt=""
-                        />
+                    <Toast.Header className={props.heading === 'Success' ? 'bg-success': 'bg-danger'}>
                         <strong className="me-auto text-white">{props.heading}</strong>
                     </Toast.Header>
-                    <Toast.Body className="text-danger text-bold">{props.message}</Toast.Body>
+                    <Toast.Body className={props.heading === 'Success' ? 'text-bold text-dark' : 'text-bold text-danger'}>{props.message}</Toast.Body>
                 </Toast>
             </ToastContainer>
         

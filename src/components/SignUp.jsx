@@ -6,11 +6,16 @@ import Button from 'react-bootstrap/Button';
 import '../Shared/Styles/Signup.scss';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Toaster from "./Toaster";
+
 const SignUp = (props) => {
     let navigate = useNavigate();
     const [users, setUsers] = useState([]);
     const [invalidUser, setInvalidUser] = useState(false);
     const [selectedFile, setSelectedFile] = useState('null');
+    const [toaster, setShowToaster] = useState(false);
+    const [errorHeading, setErrorHeading] = useState('');
+    const [errorMsg, setErrorMsg] = useState('');
     const handleFileSubmit = (e) => {
         setSelectedFile(e.target.files[0])
     }
@@ -72,7 +77,9 @@ const SignUp = (props) => {
                 localStorage.setItem('users', JSON.stringify(savedUsers));
                 setUsers(savedUsers);
                 setTimeout(() => {
-                    alert('Account created successfully!')
+                    setErrorHeading('Success');
+                    setErrorMsg(`Account created successfully!`);
+                    setShowToaster(true);
                 }, 100);
             }
         }
@@ -92,6 +99,11 @@ const SignUp = (props) => {
 
     return (
         <>
+            {
+                toaster ? <Toaster heading={errorHeading} message={errorMsg}
+                    resetToaster={() => { setErrorMsg(''); setErrorHeading(''); setShowToaster(false);}}></Toaster>
+                : null
+            }
             <div className="container-fluid">
                 <div className="row p-5 mt-4 pb-1">
                     <div className="col-md-12  justify-content-center">
