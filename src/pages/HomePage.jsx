@@ -23,7 +23,7 @@ function HomePage() {
 				<Route path="/" element={<Welcome/>}></Route>
                 <Route path="/aboutUs" element={ <AboutUsPage/>}></Route>
             </Routes>
-            {/* <Footer/> */}
+            <Footer/>
         </>
         
     );

@@ -13,5 +13,5 @@
 <img src="public/screenshots/Slide13.jpg" alt="Alt text" title="Optional title">
 <img src="public/screenshots/Slide14.jpg" alt="Alt text" title="Optional title">
 <img src="public/screenshots/Slide15.jpg" alt="Alt text" title="Optional title">
-<img src="public/screenshots/Slide16.jpg" alt="Alt text" title="Optional title">
-<img src="public/screenshots/Slide17.jpg" alt="Alt text" title="Optional title">
+<img src="public/screenshots/Slide16.PNG" alt="Alt text" title="Optional title">
+<img src="public/screenshots/Slide17.PNG" alt="Alt text" title="Optional title">
