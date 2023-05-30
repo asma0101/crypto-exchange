@@ -1,4 +1,4 @@
-<img src="public/screenshots/Slide29.PNG" alt="Alt text" title="Optional title">
+<img src="public/screenshots/Slide29.jpg" alt="Alt text" title="Optional title">
 <img src="public/screenshots/Slide18.PNG" alt="Alt text" title="Optional title">
 <img src="public/screenshots/Slide19.PNG" alt="Alt text" title="Optional title">
 <img src="public/screenshots/Slide20.PNG" alt="Alt text" title="Optional title">
