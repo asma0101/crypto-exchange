@@ -15,14 +15,3 @@
 <img src="public/screenshots/Slide15.jpg" alt="Alt text" title="Optional title">
 <img src="public/screenshots/Slide16.PNG" alt="Alt text" title="Optional title">
 <img src="public/screenshots/Slide17.PNG" alt="Alt text" title="Optional title">
-<img src="public/screenshots/Slide18.PNG" alt="Alt text" title="Optional title">
-<img src="public/screenshots/Slide19.PNG" alt="Alt text" title="Optional title">
-<img src="public/screenshots/Slide20.PNG" alt="Alt text" title="Optional title">
-<img src="public/screenshots/Slide21.PNG" alt="Alt text" title="Optional title">
-<img src="public/screenshots/Slide22.PNG" alt="Alt text" title="Optional title">
-<img src="public/screenshots/Slide23.PNG" alt="Alt text" title="Optional title">
-<img src="public/screenshots/Slide24.PNG" alt="Alt text" title="Optional title">
-<img src="public/screenshots/Slide25.PNG" alt="Alt text" title="Optional title">
-<img src="public/screenshots/Slide26.PNG" alt="Alt text" title="Optional title">
-<img src="public/screenshots/Slide27.PNG" alt="Alt text" title="Optional title">
-<img src="public/screenshots/Slide28.PNG" alt="Alt text" title="Optional title">
