@@ -7,6 +7,6 @@
 <img src="public/screenshots/Slide23.PNG" alt="Alt text" title="Optional title">
 <img src="public/screenshots/Slide24.PNG" alt="Alt text" title="Optional title">
 <img src="public/screenshots/Slide25.PNG" alt="Alt text" title="Optional title">
-<img src="public/screenshots/Slide26.PNG" alt="Alt text" title="Optional title">
+<img src="public/screenshots/Slide26.png" alt="Alt text" title="Optional title">
 <img src="public/screenshots/Slide27.PNG" alt="Alt text" title="Optional title">
 <img src="public/screenshots/Slide28.PNG" alt="Alt text" title="Optional title">
