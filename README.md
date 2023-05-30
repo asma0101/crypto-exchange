@@ -1,28 +1,28 @@
-![Alt text](public/screenshots/Slide1.jpg)
-![Alt text](public/screenshots/Slide2.jpg)
-![Alt text](public/screenshots/Slide3.jpg)
-![Alt text](public/screenshots/Slide4.jpg)
-![Alt text](public/screenshots/Slide5.jpg)
-![Alt text](public/screenshots/Slide6.jpg)
-![Alt text](public/screenshots/Slide7.jpg)
-![Alt text](public/screenshots/Slide8.jpg)
-![Alt text](public/screenshots/Slide9.jpg)
-![Alt text](public/screenshots/Slide10.jpg)
-![Alt text](public/screenshots/Slide11.jpg)
-![Alt text](public/screenshots/Slide12.jpg)
-![Alt text](public/screenshots/Slide13.jpg)
-![Alt text](public/screenshots/Slide14.jpg)
-![Alt text](public/screenshots/Slide15.jpg)
-![Alt text](public/screenshots/Slide16.PNG)
-![Alt text](public/screenshots/Slide17.PNG)
-![Alt text](public/screenshots/Slide18.PNG)
-![Alt text](public/screenshots/Slide19.PNG)
-![Alt text](public/screenshots/Slide20.PNG)
-![Alt text](public/screenshots/Slide21.PNG)
-![Alt text](public/screenshots/Slide22.PNG)
-![Alt text](public/screenshots/Slide23.PNG)
-![Alt text](public/screenshots/Slide24.PNG)
-![Alt text](public/screenshots/Slide25.PNG)
-![Alt text](public/screenshots/Slide26.PNG)
-![Alt text](public/screenshots/Slide27.PNG)
-![Alt text](public/screenshots/Slide28.PNG)
+<img src="public/screenshots/Slide1.jpg" alt="Alt text" title="Optional title">
+<img src="public/screenshots/Slide2.jpg" alt="Alt text" title="Optional title">
+<img src="public/screenshots/Slide3.jpg" alt="Alt text" title="Optional title">
+<img src="public/screenshots/Slide4.jpg" alt="Alt text" title="Optional title">
+<img src="public/screenshots/Slide5.jpg" alt="Alt text" title="Optional title">
+<img src="public/screenshots/Slide6.jpg" alt="Alt text" title="Optional title">
+<img src="public/screenshots/Slide7.jpg" alt="Alt text" title="Optional title">
+<img src="public/screenshots/Slide8.jpg" alt="Alt text" title="Optional title">
+<img src="public/screenshots/Slide9.jpg" alt="Alt text" title="Optional title">
+<img src="public/screenshots/Slide10.jpg" alt="Alt text" title="Optional title">
+<img src="public/screenshots/Slide11.jpg" alt="Alt text" title="Optional title">
+<img src="public/screenshots/Slide12.jpg" alt="Alt text" title="Optional title">
+<img src="public/screenshots/Slide13.jpg" alt="Alt text" title="Optional title">
+<img src="public/screenshots/Slide14.jpg" alt="Alt text" title="Optional title">
+<img src="public/screenshots/Slide15.jpg" alt="Alt text" title="Optional title">
+<img src="public/screenshots/Slide16.PNG" alt="Alt text" title="Optional title">
+<img src="public/screenshots/Slide17.PNG" alt="Alt text" title="Optional title">
+<img src="public/screenshots/Slide18.PNG" alt="Alt text" title="Optional title">
+<img src="public/screenshots/Slide19.PNG" alt="Alt text" title="Optional title">
+<img src="public/screenshots/Slide20.PNG" alt="Alt text" title="Optional title">
+<img src="public/screenshots/Slide21.PNG" alt="Alt text" title="Optional title">
+<img src="public/screenshots/Slide22.PNG" alt="Alt text" title="Optional title">
+<img src="public/screenshots/Slide23.PNG" alt="Alt text" title="Optional title">
+<img src="public/screenshots/Slide24.PNG" alt="Alt text" title="Optional title">
+<img src="public/screenshots/Slide25.PNG" alt="Alt text" title="Optional title">
+<img src="public/screenshots/Slide26.PNG" alt="Alt text" title="Optional title">
+<img src="public/screenshots/Slide27.PNG" alt="Alt text" title="Optional title">
+<img src="public/screenshots/Slide28.PNG" alt="Alt text" title="Optional title">
