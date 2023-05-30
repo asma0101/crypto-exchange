@@ -1,4 +1,4 @@
-<img src="[public/screenshots/Slide1.jpg](https://github.com/asma0101/crypto-exchange/blob/master-blog-detail/public/screenshots/Slide1.jpg)" alt="Alt text" title="Optional title">
+<img src="public/screenshots/Slide1.jpg" alt="Alt text" title="Optional title">
 <img src="public/screenshots/Slide2.jpg" alt="Alt text" title="Optional title">
 <img src="public/screenshots/Slide3.jpg" alt="Alt text" title="Optional title">
 <img src="public/screenshots/Slide4.jpg" alt="Alt text" title="Optional title">
