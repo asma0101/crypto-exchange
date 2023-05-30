@@ -12,7 +12,28 @@ const Labels = {
     FieldRequired: 'This field is required',
     UserAlreadyExists: 'Email already registered!',
     Dashboard: 'Dashboard',
-    SignOut: 'Sign out'
+    SignOut: 'Sign out',
+    BlogId: 'Blog ID',
+    Title: 'Title',
+    SubTitle: 'Sub Title',
+    Author: 'Author',
+    Action: 'Action',
+    View: 'View',
+    Edit: 'Edit',
+    Delete: 'Delete',
+    Blogs: 'Blogs',
+    ViewBlogDetails: 'View Blog Details',
+    EditBlogDetails: 'Edit Blog Details',
+    DeleteBlog: 'Delete Blog',
+    SureToDelete: 'Are you sure you want to delete this blog?',
+    Confirm: 'Confirm',
+    Cancel: 'Cancel',
+    SaveChanges: 'Save Changes',
+    Close: 'Close',
+    BlogId: 'Blog ID',
+    Save: 'Save',
+    NoRecords: 'No Records Found!',
+    CreateNewBlog: 'Create New Blog'
 
 }
 

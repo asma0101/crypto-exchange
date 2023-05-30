@@ -29,10 +29,15 @@ function NavbarComp() {
 				<Link className="NavBtn" to="/home">{Labels.Dashboard}</Link>
           	</Nav.Link>
             <Nav.Link>
-				<Link className="NavBtn" to="/home/aboutUs">
-				{Labels.AboutUs}
-				</Link>
-          </Nav.Link>
+              <Link className="NavBtn" to="/home/aboutUs">
+                {Labels.AboutUs}
+              </Link>
+            </Nav.Link>
+            <Nav.Link>
+              <Link className="NavBtn" to="/home/blogs">
+                {Labels.Blogs}
+              </Link>
+            </Nav.Link>
 					 
           </Nav>
           <Nav>
