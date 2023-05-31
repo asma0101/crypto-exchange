@@ -10,3 +10,4 @@
 <img src="public/screenshots/Slide26.PNG" alt="Alt text" title="Optional title">
 <img src="public/screenshots/Slide27.PNG" alt="Alt text" title="Optional title">
 <img src="public/screenshots/Slide28.PNG" alt="Alt text" title="Optional title">
+<img src="public/screenshots/Slide30.PNG" alt="Alt text" title="Optional title">
