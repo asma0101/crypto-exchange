@@ -4,7 +4,7 @@ import '../Shared/Styles/Home.scss';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import AboutUsPage from './AboutUsPage';
 import Welcome from '../components/Welcome';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import BlogsPage from './BlogsPage';
 
 function HomePage() {

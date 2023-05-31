@@ -189,7 +189,7 @@ const SignUp = (props) => {
                                         <Button variant="outline-dark" type="submit" size="lg"
                                         >Submit</Button>                                        
                                     </div>
-                                    <span>{Labels.AlreadyAccount}<a onClick={props.switchFormHandler} className="navLink">{Labels.Login}</a></span>
+                                    <span>{Labels.AlreadyAccount}<span onClick={props.switchFormHandler} className="navLink">{Labels.Login}</span></span>
                                     
                                 </form>
                             </div>

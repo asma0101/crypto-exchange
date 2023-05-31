@@ -9,12 +9,12 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel';
 const ViewEditBlog = (props) => {
 
     let [blog, setBlog] = useState({});
-    let [allBlogs, setAllBlogs] = useState({});
+    let [allBlogs, setAllBlogs] = useState([]);
     useEffect(() => {
         setBlog(props.blogData);
         setAllBlogs(props.allBlogs);
         console.log(blog, allBlogs)
-    }, [blog, allBlogs]);
+    }, [blog, allBlogs, props.blogData, props.allBlogs]);
 
     const validate = values => {
         const errors = {};

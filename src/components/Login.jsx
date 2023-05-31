@@ -190,7 +190,7 @@ const Login = (props) => {
                                     </div>
                                     {props.switchFormHandler}
                                     {props.view}
-                                    <span className="text-dark">{Labels.NoAccount} <a onClick={props.switchFormHandler} className="navLink">{Labels.SignUp}</a></span>
+                                    <span className="text-dark">{Labels.NoAccount} <span onClick={props.switchFormHandler} className="navLink">{Labels.SignUp}</span></span>
 
                                 </form>
                             </div>
