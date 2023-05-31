@@ -1,5 +1,5 @@
 import Labels from "../Shared/Labels";
-import { ErrorMessage, useFormik } from 'formik';
+import { useFormik } from 'formik';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -12,7 +12,6 @@ import Toaster from "./Toaster";
 const Login = (props) => {
     let navigate = useNavigate();
     const [users, setUsers] = useState([]);
-    const [loginSuccess, setLoginSuccess] = useState(false);
     const [toaster, setShowToaster] = useState(false);
     const [errorHeading, setErrorHeading] = useState('');
     const [errorMsg, setErrorMsg] = useState('');
@@ -61,7 +60,6 @@ const Login = (props) => {
             if ((loginAttemptsExpired(response.userInfo) === false)) {
                 if (!response.userInfo.isBlocked) {
                     if ((response.userInfo.email === userInfo.email) && (response.userInfo.password === userInfo.password)) {
-                        setLoginSuccess(true);
                         setErrorHeading('Success');
                         setErrorMsg(`Logged in successfully!`);
                         setShowToaster(true);
@@ -82,7 +80,6 @@ const Login = (props) => {
                     setErrorHeading('User Blocked');
                     setErrorMsg(`This account ${userInfo.email} is Blocked!`);
                     setShowToaster(true);
-                    setLoginSuccess(false);
                     localStorage.setItem('isLoggedIn', 'false');
                 } 
             }

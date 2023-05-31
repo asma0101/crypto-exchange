@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import Login from '../components/Login';
 import SignUp from '../components/SignUp';
-import Labels from '../Shared/Labels';
 import '../Shared/Styles/Signup.scss';
 import { useNavigate } from "react-router-dom";
 

@@ -31,7 +31,7 @@ const BlogsPage = () => {
         }
         return errors;
     };
-    const { values, errors, handleChange, handleSubmit, handleReset, resetForm, handleBlur } = useFormik({
+    const { values, errors, handleChange, handleSubmit, resetForm, handleBlur } = useFormik({
         initialValues: {
             title: '', subtitle: '', author: ''
         },

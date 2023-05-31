@@ -4,7 +4,6 @@ import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import Labels from "../../Shared/Labels";
 import { useFormik } from 'formik';
-import * as uuid from "uuid";
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 
 const ViewEditBlog = (props) => {
@@ -27,7 +26,7 @@ const ViewEditBlog = (props) => {
         }
         return errors;
     };
-    const { values, errors, handleChange, handleSubmit, handleReset, resetForm, handleBlur } = useFormik({
+    const { values, errors, handleChange, handleSubmit, handleBlur } = useFormik({
         initialValues: {
             id: props.blogData.id, title: props.blogData.title, subtitle: props.blogData.subtitle, author: props.blogData.author
         },

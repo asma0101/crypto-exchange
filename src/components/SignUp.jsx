@@ -5,12 +5,9 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import '../Shared/Styles/Signup.scss';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import Toaster from "./Toaster";
 
 const SignUp = (props) => {
-    let navigate = useNavigate();
-    const [users, setUsers] = useState([]);
     const [invalidUser, setInvalidUser] = useState(false);
     const [selectedFile, setSelectedFile] = useState('null');
     const [toaster, setShowToaster] = useState(false);
@@ -52,7 +49,7 @@ const SignUp = (props) => {
         return errors;
     };
     
-    const {values, errors, handleBlur, handleChange, handleSubmit, handleReset, resetForm} = useFormik({
+    const {values, errors, handleBlur, handleChange, handleSubmit, resetForm} = useFormik({
         initialValues: {
         email: '', name: '', homeAddress: '', cnic: '', password: ''
             },
@@ -75,7 +72,6 @@ const SignUp = (props) => {
             if (!validateUserExists(savedUsers, userInfo.email)) {
                 savedUsers.push(userInfo);
                 localStorage.setItem('users', JSON.stringify(savedUsers));
-                setUsers(savedUsers);
                 setTimeout(() => {
                     setErrorHeading('Success');
                     setErrorMsg(`Account created successfully!`);

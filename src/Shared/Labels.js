@@ -30,7 +30,6 @@ const Labels = {
     Cancel: 'Cancel',
     SaveChanges: 'Save Changes',
     Close: 'Close',
-    BlogId: 'Blog ID',
     Save: 'Save',
     NoRecords: 'No Records Found!',
     CreateNewBlog: 'Create New Blog'

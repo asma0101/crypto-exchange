@@ -9,7 +9,6 @@ import BlogsPage from './BlogsPage';
 
 function HomePage() {
     let navigate = useNavigate();
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
     useEffect(() => {
         console.log(localStorage.getItem('isLoggedIn'))
         if (!(localStorage.getItem('isLoggedIn')) || (localStorage.getItem('isLoggedIn') === 'false')) {
@@ -25,7 +24,7 @@ function HomePage() {
                 <Route path="/aboutUs" element={ <AboutUsPage/>}></Route>
                 <Route path="/blogs" element={ <BlogsPage/>}></Route>
             </Routes>
-            {/* <Footer/> */}
+            <Footer/>
         </>
         
     );
