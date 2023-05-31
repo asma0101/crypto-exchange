@@ -55,8 +55,7 @@ const BlogsPage = () => {
             <div className="container mt-5">
                 <div className="row mt-5">
                     <div className="col-md-12 mt-5">
-                        {
-                            allBlogs.length > 0 ? <>
+                            
 
                                 <div className="row">
                                     <div className="col-md-11">
@@ -69,8 +68,9 @@ const BlogsPage = () => {
                                             <span onClick={setShowModal}><i class="bi bi-plus-circle-fill"></i></span>
                                         </div>
                                     </div>
-                                </div>
-
+                        </div>
+                        {
+                            allBlogs.length > 0 ? <>
                                 <Table striped bordered hover>
                                     <thead>
                                         <tr>
