@@ -8,3 +8,5 @@
 <img src="public/screenshots/Slide38.jpg" alt="Alt text" title="Optional title">
 <img src="public/screenshots/Slide39.jpg" alt="Alt text" title="Optional title">
 <img src="public/screenshots/Slide40.jpg" alt="Alt text" title="Optional title">
+<img src="public/screenshots/Slide41.jpg" alt="Alt text" title="Optional title">
+<img src="public/screenshots/Slide42.jpg" alt="Alt text" title="Optional title">
