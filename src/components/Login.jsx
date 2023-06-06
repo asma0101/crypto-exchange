@@ -4,14 +4,17 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import '../Shared/Styles/Signup.scss';
-// import jwt from 'jsonwebtoken';
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from 'react';
 import Toaster from "./Toaster";
+import { apiCall } from "../services/apiCall";
+import { BACKEND_URL } from "../Shared/BackendUrls";
+import { useDispatch } from "react-redux";
+import { setLoggedInUser } from "../redux/Actions/usersActions";
 
 const Login = (props) => {
+    let dispatch = useDispatch()
     let navigate = useNavigate();
-    const [users, setUsers] = useState([]);
     const [toaster, setShowToaster] = useState(false);
     const [errorHeading, setErrorHeading] = useState('');
     const [errorMsg, setErrorMsg] = useState('');
@@ -49,92 +52,21 @@ const Login = (props) => {
         },
     });
 
-    function authenticateUser(userInfo) {
-        let savedUsers = localStorage.getItem('users') ? JSON.parse(localStorage.getItem('users')) : [];
-        setUsers(savedUsers);
-        console.log('users while validation => ' ,users);
-        let response = getUser(userInfo, savedUsers);
-        if (response.isUserExists) {
-            response.userInfo.loginAttempts++;
-            updateUserLoginAttempts(userInfo, response.userInfo.loginAttempts, savedUsers, false);
-            if ((loginAttemptsExpired(response.userInfo) === false)) {
-                if (!response.userInfo.isBlocked) {
-                    if ((response.userInfo.email === userInfo.email) && (response.userInfo.password === userInfo.password)) {
-                        setErrorHeading('Success');
-                        setErrorMsg(`Logged in successfully!`);
-                        setShowToaster(true);
-                        localStorage.setItem('isLoggedIn', 'true');
-                        updateUserLoginAttempts(response.userInfo, 0, savedUsers, true);
-                        setTimeout(() => {
-                            navigate("/home")                            
-                        }, 5000);
-                    }
-                    else {
-                        setErrorHeading('Error');
-                        setErrorMsg('Invalid Username or password!');
-                        setShowToaster(true);
-                    }
-                }
-                else {
-                    blockUser();
-                    setErrorHeading('User Blocked');
-                    setErrorMsg(`This account ${userInfo.email} is Blocked!`);
-                    setShowToaster(true);
-                    localStorage.setItem('isLoggedIn', 'false');
-                } 
-            }
+    async function authenticateUser(userInfo) {
+        let response = await apiCall(BACKEND_URL.LOGIN, 'POST', {user: userInfo});
+        if (response.success) {
+            localStorage.setItem('isLoggedIn', 'true');
+            localStorage.setItem('token', response.token);
+            dispatch(setLoggedInUser(response.user));
+            navigate('/home')
         }
         else {
-             setErrorHeading('Error');
-            setErrorMsg('Invalid Username or password!');
+            setErrorHeading('Error');
+            setErrorMsg(response?.msg || 'Something went wrong');
             setShowToaster(true);
         }
         resetForm();
     }
-    function getUser(userInfo, savedUsers) {
-        let isUserExists = false;
-        if (savedUsers) {
-            savedUsers.forEach(user => {
-                if (user.email === userInfo.email) {
-                    userInfo = user;
-                    isUserExists = true;
-                }
-            })
-        }
-        return { userInfo: userInfo ? userInfo: null, isUserExists };
-    }
-
-    function loginAttemptsExpired(userInfo){
-        if (userInfo.loginAttempts >= 3) {
-            setErrorHeading('User Blocked');
-            setErrorMsg(`This account ${userInfo.email} is Blocked!`);
-            setShowToaster(true);
-            return true;
-        }
-        return false;
-    }
-
-    function blockUser(userInfo, savedUsers) {
-        let index = savedUsers.findIndex(i => i.email === userInfo.email);
-        if (index && index !== -1) {
-            savedUsers[index]['isBlocked'] = true;
-            localStorage.setItem('users', JSON.stringify(savedUsers));
-        }
-    }
-
-    function updateUserLoginAttempts(userInfo, loginAttempts, savedUsers, isReset) {
-        let index = savedUsers.findIndex(i => i.email === userInfo.email);
-        if (index !== -1) {
-            if (isReset) {
-                savedUsers[index]['loginAttempts'] = 0;
-            }
-            else {
-                savedUsers[index]['loginAttempts'] = loginAttempts;
-            }
-             localStorage.setItem('users', JSON.stringify(savedUsers));
-        }
-    }
-    
    
     return (
         <>

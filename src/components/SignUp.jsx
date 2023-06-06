@@ -6,8 +6,15 @@ import Button from 'react-bootstrap/Button';
 import '../Shared/Styles/Signup.scss';
 import { useState } from 'react';
 import Toaster from "./Toaster";
+import { apiCall } from '../services/apiCall';
+import { BACKEND_URL } from "../Shared/BackendUrls";
+import { useNavigate } from "react-router";
+import { useDispatch } from "react-redux";
+import { setLoggedInUser } from "../redux/Actions/usersActions";
 
 const SignUp = (props) => {
+    let navigate = useNavigate();
+    let dispatch = useDispatch();
     const [invalidUser, setInvalidUser] = useState(false);
     const [selectedFile, setSelectedFile] = useState('null');
     const [toaster, setShowToaster] = useState(false);
@@ -60,38 +67,37 @@ const SignUp = (props) => {
             let userInfo = values;
             userInfo['isBlocked'] = false;
             userInfo['loginAttempts'] = 0;
+            // userInfo['id'] = uuid.v4();
             addUser(values);
             resetForm();
         },
     });
 
-    function addUser(userInfo) {
+    async function addUser(userInfo) {
         setInvalidUser(false);
         let savedUsers = localStorage.getItem('users') ? JSON.parse(localStorage.getItem('users')) : [];
         if (savedUsers) {
-            if (!validateUserExists(savedUsers, userInfo.email)) {
-                savedUsers.push(userInfo);
-                localStorage.setItem('users', JSON.stringify(savedUsers));
+            savedUsers.push(userInfo);
+            localStorage.setItem('users', JSON.stringify(savedUsers));
+            const response = await apiCall(BACKEND_URL.ADD_USER, "POST", { user: userInfo });
+            console.log(response);
+            if (response?.success) {
                 setTimeout(() => {
                     setErrorHeading('Success');
                     setErrorMsg(`Account created successfully!`);
                     setShowToaster(true);
+                    localStorage.setItem('token', response?.token);
+                    localStorage.setItem('isLoggedIn', "true");
+                    dispatch(setLoggedInUser(response.user));
+                    navigate('/home')
                 }, 100);
+            }
+            else{
+                setInvalidUser(true)
             }
         }
     }
 
-    function validateUserExists(savedUsers, email) {
-        let flag = false;
-        savedUsers.forEach(user => {
-            if (user.email === email) {
-                console.log('i am here')
-                setInvalidUser(true);
-                flag = true;
-            } 
-        })
-        return flag;
-    }
 
     return (
         <>

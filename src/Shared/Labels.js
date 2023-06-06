@@ -32,8 +32,20 @@ const Labels = {
     Close: 'Close',
     Save: 'Save',
     NoRecords: 'No Records Found!',
-    CreateNewBlog: 'Create New Blog'
-
+    CreateNewBlog: 'Create New Blog',
+    CryptoCoins: 'Crypto Coins',
+    CoinName: 'Coin Name',
+    CurrentRate: 'Current Rate',
+    Transfer: 'Transfer',
+    PurchasedCryptoCoins: "Purchased Crypto Coins",
+    TransferCoin: 'Transfer Coin',
+    SelectCoinChain: 'Select Coin Chain',
+    SelectTransferAddress: 'Select Transfer Address',
+    Success: 'Success',
+    Purchase: 'Purchase',
+    CoinPurchasedSuccessfully: 'Coin Purchased Successfully!',
+    PurchaseCoins: 'Purchase Coins',
+    CoinAlreadyPurchased: 'You have already purchased this coin!'
 }
 
 export default Labels;

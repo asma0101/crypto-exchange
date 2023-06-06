@@ -5,9 +5,12 @@ import Labels from '../Shared/Labels';
 import { Link } from 'react-router-dom'
 import '../Shared/Styles/Home.scss';
 import { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 function NavbarComp() {
 
-	const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const loggedInUser = useSelector(state => state.users.loggedInUser.loggedInUser);
+  console.log("Logged in user => ", loggedInUser)
 	useEffect(() => {
 		if (localStorage.getItem('isLoggedIn') === 'true') {
 			setIsLoggedIn(true);
@@ -16,6 +19,7 @@ function NavbarComp() {
 
   function logoutUser() {
     localStorage.setItem('isLoggedIn', 'false');
+    localStorage.removeItem('token')
     setIsLoggedIn(false);
   }
   return (
@@ -41,6 +45,9 @@ function NavbarComp() {
 					 
           </Nav>
           <Nav>
+            <Nav.Link>
+              <Link className="NavBtn">{loggedInUser?.name}</Link>
+            </Nav.Link>
             <Nav.Link>
               <Link to="/signup" className="NavBtn" onClick={logoutUser}>{isLoggedIn ? Labels.SignOut : Labels.SignUpLogin}</Link>
             </Nav.Link>

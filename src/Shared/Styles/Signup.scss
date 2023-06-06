@@ -22,3 +22,18 @@
 input{
     background-color: aliceblue;
 }
+.dropdownClass{
+    display: flex;
+    .dropdown{
+        width: 100%;
+        button{
+            width: 100%;
+            text-align: left;
+        }
+      
+        .dropdown-menu{
+            width: 100%;
+        }
+
+    }
+}
