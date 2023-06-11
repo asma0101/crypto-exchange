@@ -1,5 +1,5 @@
 const environment = {
-  baseUrl: "http://localhost:3006",
+  baseUrl: "https://crypto-exchange-bt4o.onrender.com",
 };
 
 export default environment;
