@@ -9,5 +9,9 @@ export const BACKEND_URL = {
     TRANSFER_COIN: '/api/coins/transfer',
     GET_COINS: '/api/coins',
     GET_LIVE_COINS: '/api/coins/liveCoins',
-    PURCHASE_COIN: '/api/coins/purchase'
+    PURCHASE_COIN: '/api/coins/purchase',
+    GET_USER_BLOGS: '/api/blogs',
+    ADD_NEW_BLOG: '/api/blogs/create',
+    UPDATE_BLOG: '/api/blogs/update',
+    DELETE_BLOG: '/api/blogs/delete',
 }

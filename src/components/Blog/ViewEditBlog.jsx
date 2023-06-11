@@ -5,16 +5,14 @@ import Modal from 'react-bootstrap/Modal';
 import Labels from "../../Shared/Labels";
 import { useFormik } from 'formik';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
+import { useSelector } from 'react-redux';
+import { apiCall } from '../../services/apiCall';
+import { BACKEND_URL } from '../../Shared/BackendUrls';
 
 const ViewEditBlog = (props) => {
 
-    let [blog, setBlog] = useState({});
-    let [allBlogs, setAllBlogs] = useState([]);
-    useEffect(() => {
-        setBlog(props.blogData);
-        setAllBlogs(props.allBlogs);
-        console.log(blog, allBlogs)
-    }, [blog, allBlogs, props.blogData, props.allBlogs]);
+    let selectedBlog = useSelector(state => state.blogs.selectedBlog.selectedBlog);
+    let loggedInUser = useSelector(state => state.users.loggedInUser.loggedInUser) || null;
 
     const validate = values => {
         const errors = {};
@@ -28,36 +26,41 @@ const ViewEditBlog = (props) => {
     };
     const { values, errors, handleChange, handleSubmit, handleBlur } = useFormik({
         initialValues: {
-            id: props.blogData.id, title: props.blogData.title, subtitle: props.blogData.subtitle, author: props.blogData.author
+            id: selectedBlog._id, title: selectedBlog.title, subtitle: selectedBlog.subtitle, author: selectedBlog.author
         },
         validate,
         onSubmit: values => {
             console.log("form values => ", values);
             updateBlog(values);
-            // resetForm();
         },
     });
-    const updateBlog = (blog) => {
-        console.log(blog)
-        //update blog here
-        const index = allBlogs.findIndex(b => b.id === blog.id);
-        if (index !== -1) {
-            allBlogs[index] = blog;
-            updateAllBlogs(allBlogs);
+    const updateBlog = async(blog) => {
+        blog['userId'] = loggedInUser.id || "";
+        try {
+            const response = await apiCall(BACKEND_URL.UPDATE_BLOG, "POST", {blog});
+            updateAllBlogs(response.updatedUserBlogs);
+        } catch (error) {
+            console.error(error);
         }
+       
     }
-    const updateAllBlogs = (allBlogs) => {
-        localStorage.setItem('blogs', JSON.stringify(allBlogs));
-        props.updateAllBlogs(JSON.parse(localStorage.getItem('blogs')));
+    const updateAllBlogs = (updatedUserBlogs) => {
+        props.updateAllBlogs(updatedUserBlogs);
         props.handleClose();
     }
 
-    const deleteBlog = (id) => {
-        const index = allBlogs.findIndex(b => b.id === id);
-        if (index !== -1) {
-            allBlogs.splice(index, 1);
-            updateAllBlogs(allBlogs);
+    const deleteBlog = async (id) => {
+        const blog = {
+            id: id,
+            userId: loggedInUser.id || ""
         }
+        try {
+            const response = await apiCall(BACKEND_URL.DELETE_BLOG, "POST", { blog });
+            updateAllBlogs(response.updatedUserBlogs);
+        } catch (error) {
+            console.error(error);
+        }
+      
     }
 
     return (
@@ -169,7 +172,7 @@ const ViewEditBlog = (props) => {
                             <Button variant="secondary" onClick={props.handleClose}>
                                 {Labels.Close}
                             </Button>
-                            <Button variant='danger' onClick={() => {deleteBlog(props.blogData.id) }}>
+                            <Button variant='danger' onClick={() => {deleteBlog(selectedBlog._id) }}>
                                 {Labels.Confirm}
                             </Button>
                         </Modal.Footer>

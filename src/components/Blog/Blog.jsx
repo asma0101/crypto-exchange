@@ -2,21 +2,29 @@ import Button from 'react-bootstrap/Button';
 import '../../Shared/Styles/Blogs.scss';
 import { useState } from 'react';
 import ViewEditBlog from './ViewEditBlog';
+import { useDispatch } from 'react-redux';
+import { setSelectedBlog } from '../../redux/Actions/blogsActions';
+
 const Blog = (props) => {
 
     const [view, setView] = useState('');
     const [showModal, setShowModal] = useState(false);
-    const viewBlog = (view) => {
+
+    let dispatch = useDispatch();
+    const viewBlog = async(view) => {
+        await dispatch(setSelectedBlog(props.blogData));
         setView(view)
         setShowModal(true);
+
     }
     const updateAllBlogs = (data) => {
         props.updateAllBlogs(data);
     }
+   
     return (
         <>
             <tr >
-                <td>{props.blogData.id}</td>
+                <td>{props.blogData._id}</td>
                 <td>{props.blogData.title}</td>
                 <td>{props.blogData.subtitle}</td>
                 <td>{props.blogData.author}</td>
@@ -32,8 +40,6 @@ const Blog = (props) => {
             {
                 showModal ?
                     <ViewEditBlog
-                        allBlogs={props.allBlogs}
-                        blogData={props.blogData}
                         show={showModal}
                         handleClose={() => { setShowModal(false) }}
                         view={view}
