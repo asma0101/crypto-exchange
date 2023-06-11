@@ -35,7 +35,7 @@ const BlogsPage = () => {
         } catch (error) {
             console.error(error);
         }
-    }, [setAllBlogs, loggedInUser.id]);
+    }, [setAllBlogs, loggedInUser.id, dispatch]);
     useEffect(() => {
         const fetchData = async () => {
             await fetchUserBlogs();
