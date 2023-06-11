@@ -21,3 +21,9 @@
     // top:10%
     text-align: end;
 }
+.loader{
+  position: absolute;
+  top:50%;
+  left:50%;
+  z-index: 99;
+}

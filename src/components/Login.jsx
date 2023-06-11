@@ -12,6 +12,8 @@ import { BACKEND_URL } from "../Shared/BackendUrls";
 import { useDispatch } from "react-redux";
 import { setLoggedInUser } from "../redux/Actions/usersActions";
 import React from 'react';
+import Spinner from 'react-bootstrap/Spinner';
+import '../Shared/Styles/Coins.scss';
 
 const Login = (props) => {
     let dispatch = useDispatch()
@@ -19,6 +21,8 @@ const Login = (props) => {
     const [toaster, setShowToaster] = useState(false);
     const [errorHeading, setErrorHeading] = useState('');
     const [errorMsg, setErrorMsg] = useState('');
+    const [loader, setLoader] = useState(false);
+
 
     useEffect(() => {
         if (localStorage.getItem('isLoggedIn') && localStorage.getItem('isLoggedIn') === 'true') {
@@ -54,6 +58,7 @@ const Login = (props) => {
     });
 
     async function authenticateUser(userInfo) {
+        setLoader(true);
         let response = await apiCall(BACKEND_URL.LOGIN, 'POST', {user: userInfo});
         if (response.success) {
             localStorage.setItem('isLoggedIn', 'true');
@@ -67,6 +72,7 @@ const Login = (props) => {
             setShowToaster(true);
         }
         resetForm();
+        setLoader(false);
     }
    
     return (
@@ -76,63 +82,70 @@ const Login = (props) => {
                     resetToaster={() => { setErrorMsg(''); setErrorHeading(''); setShowToaster(false);}}></Toaster>
                 : null
             }
-            <div className="container-fluid">
-                <div className="row p-5 mt-4 pb-1">
-                    <div className="col-md-12  justify-content-center">
-                        <div className="form-header row">
-                            <h1>{Labels.Login}</h1>
-                        </div>
-                        <div className="row justify-content-center">
-                            <div className="col-md-5 p-3" style={{border: '1px solid grey'}}>
-                                <form onSubmit={handleSubmit}>
-                                    <FloatingLabel
-                                        controlId="email"
-                                        label="Email Address"
-                                        className="mb-3"
-                                        
-                                    >
-                                        <Form.Control type="email" placeholder="john@example.com"
-                                            name ="email"
-                                            onChange={handleChange}
-                                            value={values.email}
-                                            onBlur={handleBlur}
-                                        />
-                                    </FloatingLabel>
-                                    <div className="errorMsg">
-                                        {errors.email ? <div>{errors.email}</div> : null}
-                                    </div>
-                                    <FloatingLabel
-                                        controlId="password"
-                                        label="Password"
-                                        className="mb-3"
-                                    >
-                                        <Form.Control type="password" placeholder="********"
-                                            name ="password"
-                                            onChange={handleChange}
-                                            value={values.password}
-                                            onBlur={handleBlur}
-                                        />
-                                    </FloatingLabel>
-                                    <div className="errorMsg">
-                                        {errors.password  ? <div>{errors.password}</div> : null}
+            {
+                loader ?
+                    <Spinner animation="grow" variant="dark" className="loader"
+                        style={{ zIndex: 999, position: 'absolute', top: '50%', left: '50%' }} />
+                    :
+                    <div className="container-fluid">
+                        <div className="row p-5 mt-4 pb-1">
+                            <div className="col-md-12  justify-content-center">
+                                <div className="form-header row">
+                                    <h1>{Labels.Login}</h1>
+                                </div>
+                                <div className="row justify-content-center">
+                                    <div className="col-md-5 p-3" style={{ border: '1px solid grey' }}>
+                                        <form onSubmit={handleSubmit}>
+                                            <FloatingLabel
+                                                controlId="email"
+                                                label="Email Address"
+                                                className="mb-3"
+
+                                            >
+                                                <Form.Control type="email" placeholder="john@example.com"
+                                                    name="email"
+                                                    onChange={handleChange}
+                                                    value={values.email}
+                                                    onBlur={handleBlur}
+                                                />
+                                            </FloatingLabel>
+                                            <div className="errorMsg">
+                                                {errors.email ? <div>{errors.email}</div> : null}
+                                            </div>
+                                            <FloatingLabel
+                                                controlId="password"
+                                                label="Password"
+                                                className="mb-3"
+                                            >
+                                                <Form.Control type="password" placeholder="********"
+                                                    name="password"
+                                                    onChange={handleChange}
+                                                    value={values.password}
+                                                    onBlur={handleBlur}
+                                                />
+                                            </FloatingLabel>
+                                            <div className="errorMsg">
+                                                {errors.password ? <div>{errors.password}</div> : null}
+                                            </div>
+
+                                            <div className="submitButton">
+                                                <Button variant="outline-dark" type="submit" size="lg"
+                                                >Login</Button>
+                                            </div>
+                                            {props.switchFormHandler}
+                                            {props.view}
+                                            <span className="text-dark">{Labels.NoAccount} <span onClick={props.switchFormHandler} className="navLink">{Labels.SignUp}</span></span>
+
+                                        </form>
                                     </div>
 
-                                    <div className="submitButton">
-                                        <Button variant="outline-dark" type="submit" size="lg"
-                                            >Login</Button>
-                                    </div>
-                                    {props.switchFormHandler}
-                                    {props.view}
-                                    <span className="text-dark">{Labels.NoAccount} <span onClick={props.switchFormHandler} className="navLink">{Labels.SignUp}</span></span>
+                                </div>
 
-                                </form>
                             </div>
-                            
                         </div>
-                        
                     </div>
-                </div>
-            </div>
+            }
+            
             
         </>
     );

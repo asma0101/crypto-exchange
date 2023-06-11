@@ -7,10 +7,13 @@ import { apiCall } from '../services/apiCall';
 import { BACKEND_URL } from '../Shared/BackendUrls';
 import { setCoins } from '../redux/Actions/coinsActions';
 import React from 'react';
+import Spinner from 'react-bootstrap/Spinner';
+import '../Shared/Styles/Coins.scss';
 
 const CryptoCoinsPage = () => {
 
     const [userCoins, setUserCoins] = useState([]);
+    const [loader ,setLoader] = useState(true);
     let loggedInUser = useSelector(state => state.users.loggedInUser.loggedInUser) || null;
     if (!loggedInUser) {
         loggedInUser = {};
@@ -29,6 +32,7 @@ const CryptoCoinsPage = () => {
     useEffect(() => {
         const fetchData = async () => {
             await fetchCoinsRates();
+            setLoader(false);
         }
         fetchData();
     }, [fetchCoinsRates]);
@@ -40,25 +44,36 @@ const CryptoCoinsPage = () => {
 
     return (
         <>
-            <Table striped bordered hover>
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th>{Labels.CoinName}</th>
-                        <th>{Labels.CurrentRate} ({Labels.USD})</th>
-                        <th>{Labels.TransferCoin}</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {
-                        userCoins.map((coin) => {
-                            return <Coin key={coin?.name} coin={coin} ></Coin>
-                        })
-                    }
+            {
+                loader ?
+                    <Spinner animation="grow" variant="dark" className="loader"
+                        style={{ zIndex: 999, position: 'absolute', top: '50%', left:'50%' }}/> :
+                
+                    userCoins.length === 0 ?
+                    <div className="row">
+                        <div className="col-md-12">
+                            <h2>No Coins Purchased!.</h2>
+                        </div>
+                    </div> :
+                    <Table striped bordered hover>
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>{Labels.CoinName}</th>
+                            <th>{Labels.CurrentRate} ({Labels.USD})</th>
+                            <th>{Labels.TransferCoin}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            userCoins.map((coin) => {
+                                return <Coin key={coin?.name} coin={coin} ></Coin>
+                            })
+                        }
 
-                </tbody>
-            </Table>
-            
+                    </tbody>
+                </Table>
+            }
         </>
     );
 }

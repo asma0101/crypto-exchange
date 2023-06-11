@@ -42,6 +42,11 @@ function NavbarComp() {
                 {Labels.Blogs}
               </Link>
             </Nav.Link>
+            <Nav.Link>
+              <Link className="NavBtn" to="/home/purchase">
+                {Labels.PurchaseCoins}
+              </Link>
+            </Nav.Link>
 					 
           </Nav>
           <Nav>

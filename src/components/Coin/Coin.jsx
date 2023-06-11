@@ -8,6 +8,9 @@ import { apiCall } from "../../services/apiCall";
 import { BACKEND_URL } from "../../Shared/BackendUrls";
 import Toaster from "../Toaster";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import Spinner from 'react-bootstrap/Spinner';
+import '../../Shared/Styles/Coins.scss';
+
 const Coin = ({coin, isPurchase}) => {
 
     const [toaster, setShowToaster] = useState(false);
@@ -16,12 +19,14 @@ const Coin = ({coin, isPurchase}) => {
     let navigate = useNavigate();
     let dispatch = useDispatch();
     const loggedInUser = useSelector(state => state.users.loggedInUser.loggedInUser);
+    const [loader, setLoader] = useState(false);
 
     const transferCoin = () => {
         dispatch(setSelectedCoin(coin));
         navigate('/home/transfer');
     }
     const purchaseCoin = async () => {
+        setLoader(true);
         let response = await apiCall(BACKEND_URL.PURCHASE_COIN, 'POST',
             {
                 coin: {
@@ -41,28 +46,35 @@ const Coin = ({coin, isPurchase}) => {
             setErrorMsg(Labels.CoinAlreadyPurchased);
             setShowToaster(true)
         }
+        setLoader(false);
     }
 
     return (
         <>
-            <tr >
-                {
-                    !isPurchase?
-                <td><LazyLoadImage src={coin?.img}
-                    width={50} height={50}
-                    alt="Coin Img"
-                        /></td>
-                        : null
-                }
+            {
+                loader ? <Spinner animation="grow" variant="dark" className="loader"
+                    style={{ zIndex: 999, position: 'absolute', top: '50%', left: '50%' }} />
+                    :
+                    <tr >
+                        {
+                            !isPurchase ?
+                                <td><LazyLoadImage src={coin?.img}
+                                    width={50} height={50}
+                                    alt="Coin Img"
+                                /></td>
+                                : null
+                        }
 
-                <td>{coin?.name}</td>
-                <td>{coin?.rate}</td>
-                <td>
-                    <Button variant="outline-dark" className="action-btn"
-                        onClick={isPurchase ? purchaseCoin : transferCoin}
-                    >{isPurchase ? Labels.Purchase : Labels.Transfer}</Button>
-                </td>
-            </tr>
+                        <td>{coin?.name}</td>
+                        <td>{coin?.rate}</td>
+                        <td>
+                            <Button variant="outline-dark" className="action-btn"
+                                onClick={isPurchase ? purchaseCoin : transferCoin}
+                            >{isPurchase ? Labels.Purchase : Labels.Transfer}</Button>
+                        </td>
+                    </tr>
+            }
+            
 
             {
                 toaster ? <Toaster heading={errorHeading} message={errorMsg}
