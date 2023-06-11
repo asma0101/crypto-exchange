@@ -9,6 +9,7 @@ import Modal from 'react-bootstrap/Modal';
 import { useFormik } from 'formik';
 import * as uuid from "uuid";
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
+import React from 'react';
 const BlogsPage = () => {
 
     const [allBlogs, setAllBlogs] = useState([]);
@@ -65,7 +66,7 @@ const BlogsPage = () => {
                                     </div>
                                     <div className="col-md-1 add-Blog-wrapper">
                                         <div className="add-blog">
-                                            <span onClick={setShowModal}><i class="bi bi-plus-circle-fill"></i></span>
+                                            <span onClick={setShowModal}><i className="bi bi-plus-circle-fill"></i></span>
                                         </div>
                                     </div>
                         </div>

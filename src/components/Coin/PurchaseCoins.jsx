@@ -4,7 +4,6 @@ import { BACKEND_URL } from '../../Shared/BackendUrls';
 import Table from 'react-bootstrap/Table';
 import Coin from './Coin';
 import Labels from '../../Shared/Labels';
-import Toaster from "../Toaster";
 
 const PurchaseCoins = () => {
 
@@ -28,7 +27,7 @@ const PurchaseCoins = () => {
             fetchCoins();
         }
         setSkip(true);
-    })
+    },[skip])
 
     return (
         <>

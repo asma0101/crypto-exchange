@@ -29,6 +29,12 @@ const coinsReducer = (state = initialState, action) => {
         ...state,
         targetCurrency: action.payload
       };
+    case ACTIONS.SET_DUMMY_IMGS:
+      return {
+        ...state,
+        imgs: action.payload
+      }
+    
       
     default:
       return state;

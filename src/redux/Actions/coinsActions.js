@@ -16,3 +16,9 @@ export const setTargetCurrency = (targetCurrency) => ({
   type: ACTIONS.SET_TARGET_CURRENCY,
   payload: {targetCurrency}
 })
+
+export const setDummyImgs = (imgs) => ({
+  type: ACTIONS.SET_DUMMY_IMGS,
+  payload: {imgs}
+
+})

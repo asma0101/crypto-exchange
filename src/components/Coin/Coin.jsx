@@ -7,7 +7,7 @@ import { setCoins, setSelectedCoin } from "../../redux/Actions/coinsActions";
 import { apiCall } from "../../services/apiCall";
 import { BACKEND_URL } from "../../Shared/BackendUrls";
 import Toaster from "../Toaster";
-
+import { LazyLoadImage } from "react-lazy-load-image-component";
 const Coin = ({coin, isPurchase}) => {
 
     const [toaster, setShowToaster] = useState(false);
@@ -46,6 +46,15 @@ const Coin = ({coin, isPurchase}) => {
     return (
         <>
             <tr >
+                {
+                    !isPurchase?
+                <td><LazyLoadImage src={coin?.img}
+                    width={50} height={50}
+                    alt="Coin Img"
+                        /></td>
+                        : null
+                }
+
                 <td>{coin?.name}</td>
                 <td>{coin?.rate}</td>
                 <td>

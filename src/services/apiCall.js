@@ -1,4 +1,5 @@
-import axios from "axios";
+import axios from 'axios';
+// const axios = require('axios');
 import environment from "../environment/environment";
 
 export const  apiCall = async (
@@ -20,7 +21,6 @@ export const  apiCall = async (
   })
     .then((response) => {
       _response = response.data;
-     
     })
     .catch((error) => {
       console.log(error);

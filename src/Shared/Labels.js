@@ -45,7 +45,8 @@ const Labels = {
     Purchase: 'Purchase',
     CoinPurchasedSuccessfully: 'Coin Purchased Successfully!',
     PurchaseCoins: 'Purchase Coins',
-    CoinAlreadyPurchased: 'You have already purchased this coin!'
+    CoinAlreadyPurchased: 'You have already purchased this coin!',
+    USD: 'USD'
 }
 
 export default Labels;
