@@ -86,11 +86,7 @@ const BlogsPage = () => {
     return (
         <>
             {
-                loader ?
-                    <Spinner animation="grow" variant="dark" className="loader"
-                        style={{ zIndex: 999, position: 'absolute', top: '50%', left: '50%' }} />
-                    
-                    :
+                
                     <div className="container mt-5">
                         <div className="row mt-5">
                             <div className="col-md-12 mt-5">
@@ -108,7 +104,12 @@ const BlogsPage = () => {
                                         </div>
                                     </div>
                                 </div>
-                                {
+                            {
+                                loader ?
+                                    <Spinner animation="grow" variant="dark" className="loader"
+                                        style={{ zIndex: 999, position: 'absolute', top: '50%', left: '50%' }} />
+
+                                    :
                                     allBlogs?.length > 0 ? <>
                                         <Table striped bordered hover>
                                             <thead>

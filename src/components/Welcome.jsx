@@ -2,9 +2,10 @@ import CryptoCoinsPage from '../pages/CryptoCoinsPage';
 import Labels from '../Shared/Labels';
 import '../Shared/Styles/Home.scss';
 import { Link } from 'react-router-dom'
+import React from 'react';
 
 
-function Welcome() {
+const  Welcome = () => {
     
     return (
         <>
@@ -20,9 +21,9 @@ function Welcome() {
                                     <Link to="/home/purchase" className="navItem">{Labels.PurchaseCoins}</Link>
                                 </div>
                             </div>
-                            <div className="row p-3">
+                            <div className="row p-3" data-testid="crypto-coins-page">
                                 <div className="col-md-12">
-                                    <CryptoCoinsPage></CryptoCoinsPage>
+                                    <CryptoCoinsPage ></CryptoCoinsPage>
                                 </div>
                             </div>
                             
